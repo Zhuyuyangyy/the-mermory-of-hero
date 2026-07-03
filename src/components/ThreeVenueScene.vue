@@ -12,8 +12,8 @@ const exhibitMeshes = []
 
 function buildScene() {
   scene = new THREE.Scene()
-  scene.background = new THREE.Color(0x11121a)
-  scene.fog = new THREE.Fog(0x11121a, 15, 40)
+  scene.background = new THREE.Color(0x0a0808)
+  scene.fog = new THREE.Fog(0x0a0808, 15, 40)
 
   camera = new THREE.PerspectiveCamera(
     60,
@@ -38,17 +38,17 @@ function buildScene() {
   // 地面（占位场馆地板）
   const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(40, 40),
-    new THREE.MeshStandardMaterial({ color: 0x22232d }),
+    new THREE.MeshStandardMaterial({ color: 0x161010 }),
   )
   floor.rotation.x = -Math.PI / 2
   scene.add(floor)
 
-  const grid = new THREE.GridHelper(40, 40, 0x33344a, 0x22232d)
+  const grid = new THREE.GridHelper(40, 40, 0x5a1f1f, 0x241616)
   scene.add(grid)
 
   // 灯光
-  scene.add(new THREE.AmbientLight(0xffffff, 0.6))
-  const dirLight = new THREE.DirectionalLight(0xffffff, 0.8)
+  scene.add(new THREE.AmbientLight(0xffe8e0, 0.55))
+  const dirLight = new THREE.DirectionalLight(0xffd8d0, 0.85)
   dirLight.position.set(5, 10, 5)
   scene.add(dirLight)
 

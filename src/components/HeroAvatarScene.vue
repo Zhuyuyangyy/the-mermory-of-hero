@@ -13,7 +13,7 @@ const clock = new THREE.Clock()
 
 function buildScene() {
   scene = new THREE.Scene()
-  scene.background = new THREE.Color(0x0e0f16)
+  scene.background = new THREE.Color(0x0a0808)
 
   camera = new THREE.PerspectiveCamera(
     45,
@@ -28,8 +28,8 @@ function buildScene() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   canvasHost.value.appendChild(renderer.domElement)
 
-  scene.add(new THREE.AmbientLight(0xffffff, 0.7))
-  const key = new THREE.DirectionalLight(0xffffff, 0.9)
+  scene.add(new THREE.AmbientLight(0xffe8e0, 0.7))
+  const key = new THREE.DirectionalLight(0xffd8d0, 0.9)
   key.position.set(2, 4, 3)
   scene.add(key)
 
@@ -37,7 +37,7 @@ function buildScene() {
 
   body = new THREE.Mesh(
     new THREE.CapsuleGeometry(0.5, 1.1, 4, 16),
-    new THREE.MeshStandardMaterial({ color: 0x3b6ea5 }),
+    new THREE.MeshStandardMaterial({ color: 0x8c1010 }),
   )
   body.position.y = 1
   group.add(body)
@@ -58,7 +58,7 @@ function buildScene() {
 
   const floor = new THREE.Mesh(
     new THREE.CircleGeometry(2, 32),
-    new THREE.MeshStandardMaterial({ color: 0x1b1c26 }),
+    new THREE.MeshStandardMaterial({ color: 0x141010 }),
   )
   floor.rotation.x = -Math.PI / 2
   group.add(floor)
