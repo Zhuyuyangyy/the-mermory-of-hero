@@ -1,23 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&amp;family=Ma+Shan+Zheng&amp;display=swap');
+
 :root {
-  --text: #b8aeae;
-  --text-h: #f5efef;
-  --bg: #0a0808;
-  --bg-elevated: #141010;
-  --border: #3a2323;
-  --card-bg: #170f0f;
-  --accent: #d92b2b;
-  --accent-bg: rgba(217, 43, 43, 0.12);
-  --accent-border: rgba(217, 43, 43, 0.55);
-  --shadow:
-    rgba(0, 0, 0, 0.5) 0 10px 15px -3px, rgba(0, 0, 0, 0.3) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-
-  font: 16px/145% var(--sans);
-  color-scheme: dark;
-  color: var(--text);
-  background: var(--bg);
+  --red-primary: #8B1A1A;
+  --red-deep: #6B1010;
+  --red-light: #A52A2A;
+  --red-accent: #C41E3A;
+  --gold: #C9A96E;
+  --gold-light: #DFC086;
+  --parchment: #F5EDE0;
+  --parchment-light: #F9F3E8;
+  --parchment-dark: #E8DCC8;
+  --brown-text: #3D2914;
+  --brown-light: #6B5344;
+  --border-red: rgba(139, 26, 26, 0.3);
+  
+  --font-serif: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  --font-brush: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', cursive;
+  
+  font: 16px/1.6 var(--font-serif);
+  color-scheme: light;
+  color: var(--brown-text);
+  background: var(--parchment);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,59 +29,123 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
 }
 
-h1, h2, h3 {
-  font-family: var(--heading);
-  font-weight: 600;
-  color: var(--text-h);
-  margin: 0 0 8px;
+#app {
+  width: 100%;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--red-deep);
+  margin: 0;
+  line-height: 1.3;
 }
 
 p {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 button {
   font: inherit;
   cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 .card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.btn {
-  border: 1px solid var(--accent-border);
-  background: var(--accent-bg);
-  color: var(--text-h);
-  padding: 8px 16px;
+  background: var(--parchment-light);
+  border: 1px solid var(--border-red);
   border-radius: 8px;
-  transition: box-shadow 0.2s, background 0.2s;
-}
-
-.btn:hover {
-  box-shadow: var(--shadow);
-  background: var(--accent-border);
-}
-
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  box-shadow: 0 2px 12px rgba(107, 16, 16, 0.1);
 }
 
 .btn-primary {
-  border: none;
-  background: var(--accent);
-  color: #fff;
+  background: var(--red-primary);
+  color: var(--parchment-light);
+  padding: 14px 40px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid var(--red-primary);
+  cursor: pointer;
+  font-family: var(--font-serif);
 }
 
 .btn-primary:hover {
-  background: #c01f1f;
+  background: var(--red-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 16, 16, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--red-primary);
+  padding: 14px 40px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid var(--red-primary);
+  cursor: pointer;
+  font-family: var(--font-serif);
+}
+
+.btn-outline:hover {
+  background: var(--red-primary);
+  color: var(--parchment-light);
+  transform: translateY(-2px);
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--red-deep);
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::before {
+  content: attr(data-num);
+  font-size: 48px;
+  color: var(--red-primary);
+  margin-right: 16px;
+  font-family: var(--font-serif);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--parchment-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--red-primary);
+  border-radius: 4px;
 }
