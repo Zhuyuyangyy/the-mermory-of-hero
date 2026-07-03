@@ -39,26 +39,28 @@ function onFreeChatReply(text) {
       <p>跟随数字人完成剧本式思政课，也可以随时自由提问（示例数字人形象与课程内容为占位素材）</p>
     </div>
 
-    <div class="content-grid">
+    <div class="content-stack">
       <div class="avatar-panel card">
         <HeroAvatarScene :speaking="speaking" />
       </div>
 
-      <div class="interaction-panel">
-        <DialogueBox
-          :speaker="currentNode.speaker"
-          :text="currentNode.text"
-          :options="currentNode.options"
-          :speaking="speaking"
-          @choose="choose"
-        />
-        <div class="dialogue-actions">
-          <button class="btn" :disabled="!supported || speaking" @click="speakCurrent">
-            ▶ 朗读本段
-          </button>
+      <div class="interaction-row">
+        <div class="dialogue-col">
+          <DialogueBox
+            :speaker="currentNode.speaker"
+            :text="currentNode.text"
+            :options="currentNode.options"
+            :speaking="speaking"
+            @choose="choose"
+          />
+          <div class="dialogue-actions">
+            <button class="btn" :disabled="!supported || speaking" @click="speakCurrent">
+              ▶ 朗读本段
+            </button>
+          </div>
         </div>
 
-        <FreeChatPanel @reply="onFreeChatReply" />
+        <FreeChatPanel class="chat-col" @reply="onFreeChatReply" />
       </div>
     </div>
   </section>
@@ -79,23 +81,34 @@ function onFreeChatReply(text) {
   margin-top: 4px;
 }
 
-.content-grid {
+.content-stack {
   flex: 1;
-  display: grid;
-  grid-template-columns: minmax(280px, 1fr) minmax(360px, 1.2fr);
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-  min-height: 480px;
 }
 
 .avatar-panel {
+  position: relative;
   overflow: hidden;
-  min-height: 360px;
+  width: 100%;
+  aspect-ratio: 21 / 6;
+  min-height: 200px;
+  max-height: 320px;
 }
 
-.interaction-panel {
+.interaction-row {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.dialogue-col {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .dialogue-actions {
@@ -104,7 +117,12 @@ function onFreeChatReply(text) {
 }
 
 @media (max-width: 860px) {
-  .content-grid {
+  .avatar-panel {
+    aspect-ratio: 16 / 9;
+    max-height: none;
+  }
+
+  .interaction-row {
     grid-template-columns: 1fr;
   }
 }
